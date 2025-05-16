@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prontuário Eletrônico do Hospital</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    input[type="file"] {
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #aaa;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #ecf0f1;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+
+    #mensagemEnvio {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Prontuário Eletrônico</h1>
+
+<form id="formProntuario" onsubmit="return enviarFormulario()">
+
+  <fieldset>
+    <legend>Informações Pessoais</legend>
+
+    <label for="nome">Nome Completo</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="dataNascimento">Data de Nascimento</label>
+    <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+    <label for="telefone">Telefone</label>
+    <input type="text" id="telefone" name="telefone">
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email">
+
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" name="cpf">
+
+    <label for="genero">Gênero</label>
+    <select id="genero" name="genero">
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+      <option value="Outro">Outro</option>
+    </select>
+
+    <label for="altura">Altura (em centímetros)</label>
+    <input type="number" id="altura" name="altura" step="1" min="0">
+
+    <label for="foto">Foto do Paciente:</label>
+    <input type="file" id="foto" name="foto">
+
+    <label for="notas">Notas Adicionais:</label>
+    <textarea id="notas" name="notas" rows="4" cols="50"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Consulta Médica</legend>
+
+    <label for="dataConsulta">Data da Consulta</label>
+    <input type="date" id="dataConsulta" name="dataConsulta" required>
+
+    <label for="medico">Selecione o Médico</label>
+    <select id="medico" name="medico" required>
+      <option value="">Selecione um médico</option>
+      <option value="Dr. João Silva - Cardiologista">Dr. João Silva - Cardiologista</option>
+      <option value="Dra. Ana Souza - Pediatra">Dra. Ana Souza - Pediatra</option>
+      <option value="Dr. Marcos Lima - Ortopedista">Dr. Marcos Lima - Ortopedista</option>
+      <option value="Dra. Carla Mendes - Ginecologista">Dra. Carla Mendes - Ginecologista</option>
+      <option value="Dr. Eduardo Rocha - Neurologista">Dr. Eduardo Rocha - Neurologista</option>
+      <option value="Dra. Patrícia Nunes - Dermatologista">Dra. Patrícia Nunes - Dermatologista</option>
+      <option value="Dr. Lucas Almeida - Urologista">Dr. Lucas Almeida - Urologista</option>
+      <option value="Dra. Fernanda Torres - Endocrinologista">Dra. Fernanda Torres - Endocrinologista</option>
+      <option value="Dr. Bruno Castro - Oftalmologista">Dr. Bruno Castro - Oftalmologista</option>
+      <option value="Dra. Mariana Lopes - Reumatologista">Dra. Mariana Lopes - Reumatologista</option>
+      <option value="Dr. Rafael Costa - Psiquiatra">Dr. Rafael Costa - Psiquiatra</option>
+      <option value="Dra. Júlia Ramos - Oncologista">Dra. Júlia Ramos - Oncologista</option>
+      <option value="Dr. Fábio Vieira - Nefrologista">Dr. Fábio Vieira - Nefrologista</option>
+      <option value="Dra. Luana Peixoto - Otorrinolaringologista">Dra. Luana Peixoto - Otorrinolaringologista</option>
+      <option value="Dr. Henrique Mattos - Geriatra">Dr. Henrique Mattos - Geriatra</option>
+    </select>
+  </fieldset>
+
+  <button type="submit">Enviar Prontuário</button>
+  <div id="mensagemEnvio">✅ Prontuário enviado com sucesso ao médico.</div>
+</form>
+
+<script>
+  function enviarFormulario() {
+    const nome = document.getElementById("nome").value.trim();
+    const data = document.getElementById("dataNascimento").value.trim();
+    const medico = document.getElementById("medico").value;
+
+    if (!nome || !data || !medico) {
+      alert("Por favor, preencha todos os campos obrigatórios.");
+      return false;
+    }
+
+    document.getElementById("mensagemEnvio").style.display = "block";
+    return false; // Impede o recarregamento da página
+  }
+</script>
+
+</body>
+</html>

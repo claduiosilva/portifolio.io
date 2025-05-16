@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Animes</title>
+    <link rel="stylesheet" href="atividade.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Animes</h1>
+        <form id="animeForm">
+            <input type="text" id="animeName" placeholder="Nome do Anime" required>
+            <select id="animeGenre" required>
+                <option value="">Selecione o Gênero</option>
+                <option value="Terror">Terror</option>
+                <option value="Comédia">Comédia</option>
+                <option value="Romance">Romance</option>
+                <option value="Ação">Ação</option>
+                <option value="Isekai">Isekai</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <input type="number" id="releaseYear" placeholder="Ano de Lançamento" min="1900" max="2100" required>
+            <input type="number" id="rating" placeholder="Nota (0 a 10)" min="0" max="10" step="0.1" required>
+            <button type="submit">Cadastrar Anime</button>
+        </form>
+
+        <table id="animeTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Gênero</th>
+                    <th>Ano de Lançamento</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os animes cadastrados aparecerão aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
